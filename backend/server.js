@@ -3,7 +3,7 @@ const app = express(); // Объявляем переменную app на ос�
 const path = require('path'); // Импортируем стандартный модуль nodejs для работы с путями файловой системы
 const eh = require('express-handlebars');
 
-const indexRoutes = require('./routes/index');
+const indexRoutes = require('./routes');
 const aboutRoutes = require('./routes/about');
 const contactRoutes = require('./routes/contact');
 const productRoutes = require('./routes/product');
