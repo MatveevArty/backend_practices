@@ -54,7 +54,7 @@ export class Router {
         }
 
         // Задание html элементов конкретной страницы
-        document.getElementById('app').innerHtml =
+        document.getElementById('app').innerHTML =
             await fetch(newRoute.view).then(response => response.text());
 
         // Задание заголовка страницы в ссылке браузера
