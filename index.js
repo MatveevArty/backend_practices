@@ -1,11 +1,22 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/plain; charset=utf-8'});
-    res.end('Привет! 你好! Hello!');
+    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+
+    // Пример простейшего роутинга с html-строками
+    switch (req.url) {
+        case '/about':
+            res.write('<h1>About page</h1>');
+            break;
+        case '/contact':
+            res.write('<h1>Contact page</h1>');
+            break;
+        default:
+            res.write('<h1>Index page</h1>');
+    }
 })
 
 // Прослушиватель сервера для запуска
-server.listen(3000, () => {
+server.listen(process.argv[2], () => {
     console.log('Сервер запущен на порту 3000');
 })
