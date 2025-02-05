@@ -1,7 +1,6 @@
-// Роман указывает на то, что таких глоабльных объектов фронтенда, как window и document в бэкенде нет, т.к. нет браузера
+const fs = require('fs'); // Стандартный модуль file system
 
-// Глобальный объект nodejs, которого нет во фронтенде
-console.log(__dirname);
-
-// Также глобальный объект nodejs, которого нет во фронтенде
-console.log(process)
+// Асинхронная функция для прочтения файла
+fs.readFile('./text.txt', (error, data) => {
+    console.log(data.toString());
+})
