@@ -1,8 +1,14 @@
-const path = require('path'); // Импортируем стандартный модуль nodejs для работы с путями файловой системы
+const ProductModel = require('../models/product');
 
 class ProductController {
-    static getProducts(req, res) {
-        res.sendFile(path.resolve(__dirname + '/../views/products.html'));
+    static async getProducts(req, res) {
+
+        const products = await ProductModel.findAll()
+
+        res.render('products', {
+            title: 'PRODUCTS',
+            products: products
+        });
     }
 }
 

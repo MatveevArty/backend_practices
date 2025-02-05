@@ -2,7 +2,9 @@ const path = require('path'); // Импортируем стандартный �
 
 class IndexController {
     static getIndex(req, res) {
-        res.sendFile(path.resolve(__dirname + '/../views/index.html'));
+        res.render('index', {
+            title: 'INDEX'
+        });
     }
 }
 
