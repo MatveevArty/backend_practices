@@ -4,11 +4,7 @@ class ProductController {
     static async getProducts(req, res) {
 
         const products = await ProductModel.findAll()
-
-        res.render('products', {
-            title: 'PRODUCTS',
-            products: products
-        });
+        res.send(products); // Отправляем продукты в ответ запроса
     }
 }
 

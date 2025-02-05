@@ -1,25 +1,13 @@
 const express = require('express'); // Импортируем установленный модуль express
 const app = express(); // Объявляем переменную app на основе фреймворка express
-const path = require('path'); // Импортируем стандартный модуль nodejs для работы с путями файловой системы
-const eh = require('express-handlebars');
+const routes = require('./routes/index');
 
-const indexRoutes = require('./routes');
-const aboutRoutes = require('./routes/about');
-const contactRoutes = require('./routes/contact');
-const productRoutes = require('./routes/product');
+// Задаём использование json-формата для всего приложения
+app.use(express.json());
+app.use(express.urlencoded({extended: false})); // настраиваем специальную кодировку для параметров
 
-app.engine('handlebars', eh.engine());
-app.set('view engine', 'handlebars');
-app.set('views', './views');
-
-// Обработка роутов на статические файлы
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Обработка роутов на конкретные страницы
-app.use('/', indexRoutes);
-app.use('/about', aboutRoutes);
-app.use('/contact', contactRoutes);
-app.use('/products', productRoutes);
+// Главный роутер для бэкенд-приложения
+app.use('/api', routes); // используем именно приставку /api, чтобы все обрабатываемые url бэкенд-приложением, а далее шли конкретнные сущности
 
 // Прослушиватель сервера для запуска
 app.listen(process.argv[2], () => {
