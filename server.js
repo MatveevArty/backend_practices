@@ -12,6 +12,9 @@ app.get('/about', function (req, res) {
 app.get('/contact', function (req, res) {
     res.sendFile(__dirname + '/views/contact.html');
 })
+app.get('/products', function (req, res) {
+    res.sendFile(__dirname + '/views/products.html');
+})
 
 // Прослушиватель сервера для запуска
 app.listen(process.argv[2], () => {
