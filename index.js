@@ -1,19 +1,25 @@
 const http = require('http');
+const fs = require('fs'); // Импортируем модуль file system
 
 const server = http.createServer((req, res) => {
     res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
 
+    let file = 'index';
     // Пример простейшего роутинга с html-строками
     switch (req.url) {
         case '/about':
-            res.write('<h1>About page</h1>');
+            file = 'about';
             break;
         case '/contact':
-            res.write('<h1>Contact page</h1>');
+            file = 'contact';
             break;
-        default:
-            res.write('<h1>Index page</h1>');
     }
+
+    // Используем метод readFile для прочтения файлов из data, а для параметра err ничего не указываем
+    fs.readFile('./views/' + file + '.html', 'utf8', (err, data) => {
+        res.write(data);
+        res.end()
+    });
 })
 
 // Прослушиватель сервера для запуска
