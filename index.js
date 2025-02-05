@@ -1,6 +1,3 @@
-const fs = require('fs'); // Стандартный модуль file system
+const getRates = require('./rates'); // Указывать '.js' в конце файла уже не нужно, nodejs отработает и так
 
-// Асинхронная функция для прочтения файла
-fs.readFile('./text.txt', (error, data) => {
-    console.log(data.toString());
-})
+console.log(getRates());
