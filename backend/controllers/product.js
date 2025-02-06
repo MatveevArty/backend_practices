@@ -26,6 +26,13 @@ class ProductController {
         const product = await ProductModel.change(id, req.body);
         res.send(product); // Отправляем продукты в ответ запроса
     }
+
+    static async deleteProduct(req, res) {
+
+        const {id} = req.params;
+        await ProductModel.delete(id);
+        res.send({}); // Отправляем продукты в ответ запроса
+    }
 }
 
 module.exports = ProductController;
