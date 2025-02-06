@@ -6,6 +6,13 @@ class ProductController {
         const products = await ProductModel.findAll()
         res.send(products); // Отправляем продукты в ответ запроса
     }
+
+    static async getProduct(req, res) {
+
+        const {id} = req.params;
+        const product = await ProductModel.find(id)
+        res.send(product); // Отправляем продукты в ответ запроса
+    }
 }
 
 module.exports = ProductController;
