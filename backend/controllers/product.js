@@ -13,6 +13,12 @@ class ProductController {
         const product = await ProductModel.find(id)
         res.send(product); // Отправляем продукты в ответ запроса
     }
+
+    static async addProduct(req, res) {
+
+        const product = await ProductModel.create(req.body);
+        res.send(product); // Отправляем продукты в ответ запроса
+    }
 }
 
 module.exports = ProductController;

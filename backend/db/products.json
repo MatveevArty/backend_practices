@@ -22,5 +22,17 @@
     "title": "Товар extra",
     "description": "Описание товара extra",
     "price": "999"
+  },
+  {
+    "id": 5,
+    "title": "Товар 5",
+    "description": "Описание товара 5",
+    "price": "599"
+  },
+  {
+    "id": 6,
+    "title": "Товар 6",
+    "description": "Описание товара 6",
+    "price": "699"
   }
 ]
