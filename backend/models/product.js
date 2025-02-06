@@ -63,6 +63,37 @@ class ProductModel {
            });
         });
     }
+
+    static async change(id, newProduct) {
+        return new Promise((resolve, reject) => {
+           fs.readFile(this.path, 'utf-8', (error, data) => {
+               if (error) {
+                   reject(error);
+               } else {
+                   try {
+                       const products = JSON.parse(data);
+                       const productIndex = products.findIndex(item => parseInt(item.id) === parseInt(id));
+
+                       if (productIndex > -1) {
+                           products[productIndex] = newProduct;
+                           const newJSON = JSON.stringify(products);
+                           fs.writeFile(this.path, newJSON, 'utf-8', (error, data) => {
+                               if (error) {
+                                   reject(error);
+                               } else {
+                                   resolve(newProduct);
+                               }
+                           })
+                       } else {
+                           reject('Продукт не найден')
+                       }
+                   } catch (e) {
+                       reject('Невозможно обработать данные')
+                   }
+               }
+           });
+        });
+    }
 }
 
 module.exports = ProductModel;
