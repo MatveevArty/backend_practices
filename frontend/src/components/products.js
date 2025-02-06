@@ -19,8 +19,9 @@ export class Products {
             products.forEach((product) => {
 
                 // Создаём основной div с классом product
-                const productElement = document.createElement('div');
+                const productElement = document.createElement('a');
                 productElement.className = 'product';
+                productElement.href = '/#/product?id=/' + product.id;
 
                 // Создаём заголовок с классом title
                 const titleElement = document.createElement('div');

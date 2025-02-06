@@ -16,6 +16,12 @@ body {
     border-radius: 10px;
     padding: 20px;
     margin: 20px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.product:hover {
+    transform: scale(1.1);
 }
 
 .product .title {
